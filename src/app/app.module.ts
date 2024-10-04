@@ -72,7 +72,19 @@ const routes: Routes = [
 					import('./pages/user/profile/profile.module').then(
 						(m) => m.ProfileModule
 					)
-			}
+			},
+			{
+				path: 'conferences',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Conferences'
+					}
+				},
+				loadChildren: () =>
+					import('./modules/conference/pages/conferences/conferences.module')
+				.then((m) => m.ConferencesModule)
+			},
 		]
 	},
 	{

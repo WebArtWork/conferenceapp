@@ -87,6 +87,16 @@
 					<span class="material-icons">translate</span>
 					<span translate>Theme.Translates</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/conferences"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">event</i>
+					<span translate>Theme.Conferences</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>
