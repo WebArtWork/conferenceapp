@@ -107,6 +107,16 @@
 					<i class="material-icons">cast</i>
 					<span translate>Theme.Sessions</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/links"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">link</i>
+					<span translate>Theme.Links</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

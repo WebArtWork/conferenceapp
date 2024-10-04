@@ -103,6 +103,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencesession/pages/sessions/sessions.module'
 					).then((m) => m.SessionsModule)
+			},
+			{
+				path: 'links',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Links'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencelink/pages/links/links.module'
+					).then((m) => m.LinksModule)
 			}
 		]
 	},
