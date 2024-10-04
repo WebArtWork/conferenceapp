@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./sessions.component.scss"],
 })
 export class SessionsComponent {
-  conferenceId = this._router.url.replace('/sessions/', '');
+  conferenceId = this._router.url.includes('/sessions/') ? this._router.url.replace('/sessions/', '') : '';
   
   columns = ["name", "description"];
 
@@ -101,7 +101,15 @@ export class SessionsComponent {
   };
 
   get rows(): Conferencesession[] {
-    return this._sc.conferencesessions;
+    console.log(this.conferenceId
+      ?this._sc.sessionsByConferenceId[this.conferenceId] || []
+      :this._sc.conferencesessions);
+      console.log(this._sc.conferencesessions, this.conferenceId);
+
+    return this.conferenceId
+    ?this._sc.sessionsByConferenceId[this.conferenceId] || []
+    :this._sc.conferencesessions
+    // return this._sc.conferencesessions
   }
 
   constructor(
