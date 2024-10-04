@@ -3,10 +3,16 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SessionsComponent } from './sessions.component';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [{
-	path: '',
-	component: SessionsComponent
-}];
+const routes: Routes = [
+	{
+		path: '',
+		component: SessionsComponent
+	},
+	{
+		path: ':session_id',
+		component: SessionsComponent
+	}
+];
 
 @NgModule({
 	imports: [

@@ -4,12 +4,15 @@ import { ConferencesessionService, Conferencesession } from "../../services/conf
 import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
+import { Router } from "@angular/router";
 
 @Component({
   templateUrl: "./sessions.component.html",
   styleUrls: ["./sessions.component.scss"],
 })
 export class SessionsComponent {
+  conferenceId = this._router.url.replace('/sessions/', '');
+  
   columns = ["name", "description"];
 
   form: FormInterface = this._form.getForm("sessions", {
@@ -53,6 +56,9 @@ export class SessionsComponent {
       this._form.modal<Conferencesession>(this.form, {
         label: "Create",
         click: (created: unknown, close: () => void) => {
+          if(this.conferenceId){
+            (created as Conferencesession).conference=this.conferenceId
+          }
           this._sc.create(created as Conferencesession);
           close();
         },
@@ -103,6 +109,7 @@ export class SessionsComponent {
     private _alert: AlertService,
     private _sc: ConferencesessionService,
     private _form: FormService,
-    private _core: CoreService
+    private _core: CoreService,
+    private _router:Router
   ) {}
 }

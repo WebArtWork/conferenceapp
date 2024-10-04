@@ -4,6 +4,7 @@ import { ConferenceService, Conference } from "../../services/conference.service
 import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
+import { Router } from "@angular/router";
 
 @Component({
   templateUrl: "./conferences.component.html",
@@ -91,6 +92,13 @@ export class ConferencesComponent {
           this._form.modalUnique<Conference>("conferences", "url", doc);
         },
       },
+
+      {
+        icon: "cast",
+        click: (doc: Conference) => {
+          this._router.navigateByUrl('/sessions/'+ doc._id)
+        },
+      },
     ],
   };
 
@@ -103,6 +111,7 @@ export class ConferencesComponent {
     private _alert: AlertService,
     private _sc: ConferenceService,
     private _form: FormService,
-    private _core: CoreService
+    private _core: CoreService,
+    private _router: Router
   ) {}
 }

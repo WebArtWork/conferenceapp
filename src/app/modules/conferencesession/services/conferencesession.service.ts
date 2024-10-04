@@ -11,6 +11,7 @@ import {
 export interface Conferencesession extends CrudDocument {
   name: string;
   description: string;
+  conference:string;
 }
 
 @Injectable({

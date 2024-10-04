@@ -1,3 +1,4 @@
+import { Conferencesession } from './modules/conferencesession/services/conferencesession.service';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Renderer2 } from '@angular/core';
@@ -91,7 +92,7 @@ const routes: Routes = [
 					).then((m) => m.ConferencesModule)
 			},
 			{
-				path: 'conferencesessions',
+				path: 'sessions',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
