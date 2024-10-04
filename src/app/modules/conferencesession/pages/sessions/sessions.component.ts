@@ -97,14 +97,21 @@ export class SessionsComponent {
           this._form.modalUnique<Conferencesession>("sessions", "url", doc);
         },
       },
+
+      {
+        icon: "link",
+        click: (doc: Conferencesession) => {
+          this._router.navigateByUrl('/links/'+doc._id)
+        },
+      },
     ],
   };
 
   get rows(): Conferencesession[] {
-    console.log(this.conferenceId
-      ?this._sc.sessionsByConferenceId[this.conferenceId] || []
-      :this._sc.conferencesessions);
-      console.log(this._sc.conferencesessions, this.conferenceId);
+    // console.log(this.conferenceId
+    //   ?this._sc.sessionsByConferenceId[this.conferenceId] || []
+    //   :this._sc.conferencesessions);
+    //   console.log(this._sc.conferencesessions, this.conferenceId);
 
     return this.conferenceId
     ?this._sc.sessionsByConferenceId[this.conferenceId] || []

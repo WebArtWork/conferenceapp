@@ -4,12 +4,15 @@ import { ConferencelinkService, Conferencelink } from "../../services/conference
 import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
+import { Router } from "@angular/router";
 
 @Component({
   templateUrl: "./links.component.html",
   styleUrls: ["./links.component.scss"],
 })
 export class LinksComponent {
+  sessionId = this._router.url.includes('/links/') ? this._router.url.replace('/links/', '') : '';
+
   columns = ["name", "description"];
 
   form: FormInterface = this._form.getForm("links", {
@@ -53,6 +56,8 @@ export class LinksComponent {
       this._form.modal<Conferencelink>(this.form, {
         label: "Create",
         click: (created: unknown, close: () => void) => {
+          if(this.sessionId) (created as Conferencelink).session=this.sessionId
+
           this._sc.create(created as Conferencelink);
           close();
         },
@@ -95,7 +100,9 @@ export class LinksComponent {
   };
 
   get rows(): Conferencelink[] {
-    return this._sc.conferencelinks;
+    return this.sessionId
+    ?this._sc.linksBySessionId[this.sessionId] || []
+    :this._sc.conferencelinks;
   }
 
   constructor(
@@ -103,6 +110,7 @@ export class LinksComponent {
     private _alert: AlertService,
     private _sc: ConferencelinkService,
     private _form: FormService,
-    private _core: CoreService
+    private _core: CoreService,
+    private _router:Router
   ) {}
 }
