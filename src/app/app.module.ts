@@ -116,6 +116,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencelink/pages/links/links.module'
 					).then((m) => m.LinksModule)
+			},
+			{
+				path: 'comments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Comments'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencecomment/pages/comments/comments.module'
+					).then((m) => m.CommentsModule)
 			}
 		]
 	},

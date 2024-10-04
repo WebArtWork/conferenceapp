@@ -117,6 +117,16 @@
 					<i class="material-icons">link</i>
 					<span translate>Theme.Links</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/comments"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">comment</i>
+					<span translate>Theme.Comments</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>
