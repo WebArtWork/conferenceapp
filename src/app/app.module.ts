@@ -181,6 +181,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferenceqna/pages/qnas/qnas.module'
 					).then((m) => m.QnasModule)
+			},
+			{
+				path: 'questions',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Questions'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencequestion/pages/questions/questions.module'
+					).then((m) => m.QuestionsModule)
 			}
 		]
 	},

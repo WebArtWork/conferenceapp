@@ -134,6 +134,12 @@ export class SessionsComponent {
           this._router.navigateByUrl('/qnas/'+doc._id)
         },
       },
+      {
+        icon: "contact_support",
+        click: (doc: Conferencesession) => {
+          this._router.navigateByUrl('/questions/'+doc._id)
+        },
+      },
     ],
   };
 

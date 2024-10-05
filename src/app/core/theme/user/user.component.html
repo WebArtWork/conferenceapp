@@ -167,6 +167,16 @@
 					<i class="material-icons">live_help</i>
 					<span translate>Theme.Qnas</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/questions"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">contact_support</i>
+					<span translate>Theme.Questions</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>
