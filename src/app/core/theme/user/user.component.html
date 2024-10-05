@@ -137,6 +137,16 @@
 					<i class="material-icons">message</i>
 					<span translate>Theme.Messages</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/notes"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">note</i>
+					<span translate>Theme.Notes</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

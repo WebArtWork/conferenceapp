@@ -142,6 +142,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencemessage/pages/messages/messages.module'
 					).then((m) => m.MessagesModule)
+			},
+			{
+				path: 'notes',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Notes'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencenote/pages/notes/notes.module'
+					).then((m) => m.NotesModule)
 			}
 		]
 	},
