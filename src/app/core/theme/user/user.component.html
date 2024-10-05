@@ -147,6 +147,16 @@
 					<i class="material-icons">note</i>
 					<span translate>Theme.Notes</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/polls"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">poll</i>
+					<span translate>Theme.Polls</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

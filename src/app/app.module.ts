@@ -155,6 +155,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencenote/pages/notes/notes.module'
 					).then((m) => m.NotesModule)
+			},
+			{
+				path: 'polls',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Polls'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencepoll/pages/polls/polls.module'
+					).then((m) => m.PollsModule)
 			}
 		]
 	},

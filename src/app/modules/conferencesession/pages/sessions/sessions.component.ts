@@ -122,6 +122,12 @@ export class SessionsComponent {
           this._router.navigateByUrl('/notes/'+doc._id)
         },
       },
+      {
+        icon: "poll",
+        click: (doc: Conferencesession) => {
+          this._router.navigateByUrl('/polls/'+doc._id)
+        },
+      },
     ],
   };
 
