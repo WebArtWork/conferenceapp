@@ -194,6 +194,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencequestion/pages/questions/questions.module'
 					).then((m) => m.QuestionsModule)
+			},
+			{
+				path: 'reactions',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Reactions'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferencereaction/pages/reactions/reactions.module'
+					).then((m) => m.ReactionsModule)
 			}
 		]
 	},

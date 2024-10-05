@@ -140,6 +140,12 @@ export class SessionsComponent {
           this._router.navigateByUrl('/questions/'+doc._id)
         },
       },
+      {
+        icon: "favorite",
+        click: (doc: Conferencesession) => {
+          this._router.navigateByUrl('/reactions/'+doc._id)
+        },
+      },
     ],
   };
 
