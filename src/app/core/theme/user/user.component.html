@@ -124,8 +124,18 @@
 					class="nav__burger-link"
 					(click)="hideSidebar()"
 				>
-					<i class="material-icons">comment</i>
+					<i class="material-icons">forum</i>
 					<span translate>Theme.Comments</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/messages"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">message</i>
+					<span translate>Theme.Messages</span>
 				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>

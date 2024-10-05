@@ -24,7 +24,7 @@ export class ConferencecommentService extends CrudService<Conferencecomment> {
   conferencecomments: Conferencecomment[] = [];
 
   commentsBySessionId:Record<string, Conferencecomment[]>={}
-  setCommentsBySessionId=this._helper.createParentIdToChildrenIds(this.commentsBySessionId,this.conferencecomments,"session")
+  setCommentsBySessionId=this._helper.createParentIdToChildrenIds<Conferencecomment[]>(this.commentsBySessionId,this.conferencecomments,"session")
 
   constructor(
     _http: HttpService,

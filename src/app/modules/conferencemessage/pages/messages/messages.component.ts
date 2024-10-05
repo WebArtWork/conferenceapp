@@ -1,23 +1,23 @@
 import { Component } from "@angular/core";
 import { AlertService, CoreService } from "wacom";
-import { ConferencesessionService, Conferencesession } from "../../services/conferencesession.service";
+import { ConferencemessageService, Conferencemessage } from "../../services/conferencemessage.service";
 import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
 
 @Component({
-  templateUrl: "./sessions.component.html",
-  styleUrls: ["./sessions.component.scss"],
+  templateUrl: "./messages.component.html",
+  styleUrls: ["./messages.component.scss"],
 })
-export class SessionsComponent {
-  conferenceId = this._router.url.includes('/sessions/') ? this._router.url.replace('/sessions/', '') : '';
-  
+export class MessagesComponent {
+  sessionId = this._router.url.includes('/messages/') ? this._router.url.replace('/messages/', '') : '';
+
   columns = ["name", "description"];
 
-  form: FormInterface = this._form.getForm("sessions", {
-    formId: "sessions",
-    title: "Sessions",
+  form: FormInterface = this._form.getForm("messages", {
+    formId: "messages",
+    title: "Messages",
     components: [
       {
         name: "Text",
@@ -26,7 +26,7 @@ export class SessionsComponent {
         fields: [
           {
             name: "Placeholder",
-            value: "fill sessions title",
+            value: "fill messages title",
           },
           {
             name: "Label",
@@ -40,7 +40,7 @@ export class SessionsComponent {
         fields: [
           {
             name: "Placeholder",
-            value: "fill sessions description",
+            value: "fill messages description",
           },
           {
             name: "Label",
@@ -53,29 +53,28 @@ export class SessionsComponent {
 
   config = {
     create: () => {
-      this._form.modal<Conferencesession>(this.form, {
+      this._form.modal<Conferencemessage>(this.form, {
         label: "Create",
         click: (created: unknown, close: () => void) => {
-          if(this.conferenceId){
-            (created as Conferencesession).conference=this.conferenceId
-          }
-          this._sc.create(created as Conferencesession);
+          if(this.sessionId) (created as Conferencemessage).session=this.sessionId
+
+          this._sc.create(created as Conferencemessage);
           close();
         },
       });
     },
-    update: (doc: Conferencesession) => {
+    update: (doc: Conferencemessage) => {
       this._form
-        .modal<Conferencesession>(this.form, [], doc)
-        .then((updated: Conferencesession) => {
+        .modal<Conferencemessage>(this.form, [], doc)
+        .then((updated: Conferencemessage) => {
           this._core.copy(updated, doc);
           this._sc.update(doc);
         });
     },
-    delete: (doc: Conferencesession) => {
+    delete: (doc: Conferencemessage) => {
       this._alert.question({
         text: this._translate.translate(
-          "Common.Are you sure you want to delete this Conferencesession?"
+          "Common.Are you sure you want to delete this Conferencemessage?"
         ),
         buttons: [
           {
@@ -93,44 +92,25 @@ export class SessionsComponent {
     buttons: [
       {
         icon: "cloud_download",
-        click: (doc: Conferencesession) => {
-          this._form.modalUnique<Conferencesession>("sessions", "url", doc);
-        },
-      },
-
-      {
-        icon: "link",
-        click: (doc: Conferencesession) => {
-          this._router.navigateByUrl('/links/'+doc._id)
-        },
-      },
-      {
-        icon: "forum",
-        click: (doc: Conferencesession) => {
-          this._router.navigateByUrl('/comments/'+doc._id)
-        },
-      },
-      {
-        icon: "message",
-        click: (doc: Conferencesession) => {
-          this._router.navigateByUrl('/messages/'+doc._id)
+        click: (doc: Conferencemessage) => {
+          this._form.modalUnique<Conferencemessage>("messages", "url", doc);
         },
       },
     ],
   };
 
-  get rows(): Conferencesession[] {
-    return this.conferenceId
-    ?this._sc.sessionsByConferenceId[this.conferenceId] || []
-    :this._sc.conferencesessions
+  get rows(): Conferencemessage[] {
+    return this.sessionId 
+      ?this._sc.messagesBySessionId[this.sessionId] || []
+      :this._sc.conferencemessages;
   }
 
   constructor(
     private _translate: TranslateService,
     private _alert: AlertService,
-    private _sc: ConferencesessionService,
+    private _sc: ConferencemessageService,
     private _form: FormService,
     private _core: CoreService,
-    private _router:Router
+    private _router: Router
   ) {}
 }
