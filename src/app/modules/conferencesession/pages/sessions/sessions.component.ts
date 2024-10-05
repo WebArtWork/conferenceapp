@@ -128,6 +128,12 @@ export class SessionsComponent {
           this._router.navigateByUrl('/polls/'+doc._id)
         },
       },
+      {
+        icon: "live_help",
+        click: (doc: Conferencesession) => {
+          this._router.navigateByUrl('/qnas/'+doc._id)
+        },
+      },
     ],
   };
 

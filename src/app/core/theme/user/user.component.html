@@ -157,6 +157,16 @@
 					<i class="material-icons">poll</i>
 					<span translate>Theme.Polls</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/qnas"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">live_help</i>
+					<span translate>Theme.Qnas</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

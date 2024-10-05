@@ -168,6 +168,19 @@ const routes: Routes = [
 					import(
 						'./modules/conferencepoll/pages/polls/polls.module'
 					).then((m) => m.PollsModule)
+			},
+			{
+				path: 'qnas',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Qnas'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/conferenceqna/pages/qnas/qnas.module'
+					).then((m) => m.QnasModule)
 			}
 		]
 	},
