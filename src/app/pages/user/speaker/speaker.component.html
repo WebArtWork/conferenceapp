@@ -1,0 +1,30 @@
+<div>
+
+    <div>
+        <div class="counter" (click)="OpenModalLinks()">
+            <span>Links: </span>
+            <span>{{links.length}}</span>
+        </div>
+
+        <div class="counter" (click)="OpenModalComment()">
+            <span>Commnets: </span>
+            <span>{{comments.length}}</span>
+        </div>
+
+        <div class="counter" (click)="OpenModalPoll()">
+            <span>Polls: </span>
+            <span>{{polls.length}}</span>
+        </div>
+
+        <div class="counter" (click)="OpenModalQna()">
+            <span>Qnas: </span>
+            <span>{{qnas.length}}</span>
+        </div>
+    </div>
+
+    <app-speaker-sessions *ngIf="!sessionId" [sessions]="sessions"/>
+    <app-speaker-session *ngIf="sessionId" [session]="session"/>
+
+    <app-notes [notes]="notes"/>
+    <app-chat [messages]="messages"/>
+</div>

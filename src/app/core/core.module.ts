@@ -14,9 +14,12 @@ import { ModalModule } from './modules/modal/modal.module';
 import { FormcomponentsModule } from './formcomponents/formcomponents.module';
 import { SelectModule } from './modules/select/select.module';
 import { FormModule } from './modules/form/form.module';
+import { SessionsComponent } from './components/pages/user/speaker/sessions/sessions.component';
+import { ChatComponent } from './componnets/chat/chat.component';
+import { NotesComponent } from './componnets/notes/notes.component';
 
 @NgModule({
-	declarations: [UserComponent],
+	declarations: [UserComponent, SessionsComponent, ChatComponent, NotesComponent],
 	exports: [
 		/* exports */
 		TranslateModule,
@@ -31,7 +34,11 @@ import { FormModule } from './modules/form/form.module';
 		AlertModule,
 		ModalModule,
 		TableModule,
-		IconsModule
+		IconsModule,
+		
+		ChatComponent,
+		NotesComponent
+
 	],
 	imports: [CommonModule, FormsModule, WacomModule, FormcomponentsModule],
 	providers: []

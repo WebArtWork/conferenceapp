@@ -1,0 +1,12 @@
+<div>
+    <h1>Sessions</h1>
+    <hr/>
+
+    <div *ngFor="let session of sessions">
+        <a [href]="'/#/speaker/' + session._id">
+            <h2>{{session.name}}</h2>
+            <p>{{session.description}}</p>
+        </a>
+        <hr>
+    </div>
+</div>

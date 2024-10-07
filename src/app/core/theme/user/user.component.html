@@ -187,6 +187,26 @@
 					<i class="material-icons">favorite</i>
 					<span translate>Theme.Reactions</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/speaker"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">speaker</i>
+					<span translate>Theme.Speaker</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/attendee"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<i class="material-icons">person</i>
+					<span translate>Theme.Attendee</span>
+				</a>
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

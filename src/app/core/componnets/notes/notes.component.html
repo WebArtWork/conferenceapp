@@ -1,0 +1,12 @@
+<div>
+    <h1>Notes</h1>
+    <hr/>
+
+    <div class="scrollable-container">
+        <div *ngFor="let note of notes" class="item">
+            <h2>{{note.name}}</h2>
+            <p>{{note.description}}</p>
+            <hr/>
+        </div>
+    </div>
+</div>

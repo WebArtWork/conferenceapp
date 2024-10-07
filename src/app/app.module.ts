@@ -18,6 +18,7 @@ import { AdminsGuard } from './core/guards/admins.guard';
 import { AlertModule } from './core/modules/alert/alert.module';
 import { ModalModule } from './core/modules/modal/modal.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CommentComponent } from './modals/comment/comment.component';
 
 const routes: Routes = [
 	{
@@ -65,6 +66,26 @@ const routes: Routes = [
 		component: UserComponent,
 		children: [
 			/* user */
+			{
+				path: 'attendee',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Attendee'
+					}
+				},
+				loadChildren: () => import('./pages/user/attendee/attendee.module').then(m => m.AttendeeModule)
+			}, 
+			{
+				path: 'speaker',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Speaker'
+					}
+				},
+				loadChildren: () => import('./pages/user/speaker/speaker.module').then(m => m.SpeakerModule)
+			}, 
 			{
 				path: 'profile',
 				canActivate: [MetaGuard],
@@ -265,7 +286,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [AppComponent, GuestComponent, UserComponent],
+	declarations: [AppComponent, GuestComponent, UserComponent, CommentComponent],
 	imports: [
 		AlertModule,
 		ModalModule,
@@ -290,6 +311,7 @@ const routes: Routes = [
 			modal: {
 				modals: {
 					/* modals */
+					comment: CommentComponent,
 				}
 			}
 		}),
