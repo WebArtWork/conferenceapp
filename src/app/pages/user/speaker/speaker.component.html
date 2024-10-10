@@ -26,5 +26,8 @@
     <app-speaker-session *ngIf="sessionId" [session]="session"/>
 
     <app-notes [notes]="notes"/>
-    <app-chat [messages]="messages"/>
+    <app-chat type="messages" [messages]="messages"/>
+    <app-chat type="questions" [questions]="questions"/>
+
+    <app-speaker-reactions [reactions]="reactions"/>
 </div>

@@ -12,7 +12,9 @@ import { Conferencenote, ConferencenoteService } from 'src/app/modules/conferenc
 import { SpeakerPollsComponent } from './speaker-polls/speaker-polls.component';
 import { Conferencepoll, ConferencepollService } from 'src/app/modules/conferencepoll/services/conferencepoll.service';
 import { SpeakerQnasComponent } from './speaker-qnas/speaker-qnas.component';
-import { ConferenceqnaService } from 'src/app/modules/conferenceqna/services/conferenceqna.service';
+import { Conferenceqna, ConferenceqnaService } from 'src/app/modules/conferenceqna/services/conferenceqna.service';
+import { Conferencequestion, ConferencequestionService } from 'src/app/modules/conferencequestion/services/conferencequestion.service';
+import { Conferencereaction, ConferencereactionService } from 'src/app/modules/conferencereaction/services/conferencereaction.service';
 @Component({
 	templateUrl: './speaker.component.html',
 	styleUrls: ['./speaker.component.scss'],
@@ -34,6 +36,18 @@ export class SpeakerComponent {
 		?this._commentService.conferencecomments.filter(item=>item.session===this.sessionId) || []
 		:[]
 
+	polls:Conferencepoll[]=this.sessionId
+		?this._pollService.conferencepolls.filter(item=>item.session===this.sessionId) || []
+		:[]
+
+	qnas:Conferenceqna[]=this.sessionId
+		?this._qnaService.conferenceqnas.filter(item=>item.session===this.sessionId) || []
+		:[]
+
+	reactions:Conferencereaction[]=this.sessionId
+		?this._reactionService.conferencereactions.filter(item=>item.session===this.sessionId) || []
+		:this._reactionService.conferencereactions
+	
 	messages:Conferencemessage[]=this.sessionId
 		?this._messageService.conferencemessages.filter(item=>item.session===this.sessionId) || []
 		:this._messageService.conferencemessages
@@ -42,17 +56,15 @@ export class SpeakerComponent {
 		?this._noteService.conferencenotes.filter(item=>item.session===this.sessionId) || []
 		:this._noteService.conferencenotes
 
-	polls:Conferencepoll[]=this.sessionId
-		?this._pollService.conferencepolls.filter(item=>item.session===this.sessionId) || []
-		:[]
-
-	qnas:Conferencepoll[]=this.sessionId
-		?this._qnaService.conferenceqnas.filter(item=>item.session===this.sessionId) || []
-		:[]
-
+	questions:Conferencequestion[]=this.sessionId
+		?this._questionService.conferencequestions.filter(item=>item.session===this.sessionId) || []
+		:this._questionService.conferencequestions
+	
 	constructor(
 		private _pollService:ConferencepollService,
+		private _reactionService:ConferencereactionService,
 		private _qnaService:ConferenceqnaService,
+		private _questionService:ConferencequestionService,
 		private _commentService:ConferencecommentService,
 		private _messageService:ConferencemessageService,
 		private _noteService:ConferencenoteService,

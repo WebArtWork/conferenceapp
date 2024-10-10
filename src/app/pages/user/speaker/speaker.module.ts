@@ -7,6 +7,7 @@ import { SpeakerSessionsComponent } from './speaker-sessions/speaker-sessions.co
 import { SpeakerLinksComponent } from './speaker-links/speaker-links.component';
 import { SpeakerPollsComponent } from './speaker-polls/speaker-polls.component';
 import { SpeakerQnasComponent } from './speaker-qnas/speaker-qnas.component';
+import { SpeakerReactionsComponent } from './speaker-reactions/speaker-reactions.component';
 
 const routes: Routes = [
 	{
@@ -32,6 +33,7 @@ const routes: Routes = [
      	SpeakerLinksComponent,
       SpeakerPollsComponent,
       SpeakerQnasComponent,
+      SpeakerReactionsComponent,
 	],
 	providers: []
 

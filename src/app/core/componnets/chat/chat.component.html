@@ -1,10 +1,36 @@
 <div>
-    <h1>Messages</h1>
+    <h1 *ngIf="type==='messages'">Messages</h1>
+    <h1 *ngIf="type==='questions'">Questions</h1>
     <hr/>
 
-    <div *ngFor="let message of messages">
-        <h2>{{message.name}}</h2>
-        <p>{{message.description}}</p>
-        <hr/>
-    </div>
+    <ng-container *ngIf="type==='messages'">
+        <div  *ngFor="let message of messages">
+            <h2>{{message.name}}</h2>
+            <p>{{message.description}}</p>
+            <hr/>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="type==='questions'">
+        <div  *ngFor="let question of questions">
+            <div>
+                <h2>{{question.name}}</h2>
+                <p>{{question.description}}</p>
+                <div>
+                    <i class="material-icons" 
+                        [ngClass]="{'active': questionsLikeToggle[question._id] && questionsLikeToggle[question._id]==='like'}" 
+                        (click)="LikeToggle(question._id,'like')">
+                    thumb_up
+                    </i>
+
+                    <i class="material-icons" 
+                        [ngClass]="{'active': questionsLikeToggle[question._id] && questionsLikeToggle[question._id]==='dislike'}" 
+                        (click)="LikeToggle(question._id,'dislike')">
+                    thumb_down
+                    </i>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </ng-container>
 </div>
