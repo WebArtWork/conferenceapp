@@ -8,4 +8,6 @@ import { Conferencesession } from 'src/app/modules/conferencesession/services/co
 })
 export class SpeakerSessionsComponent {
   @Input() sessions:Conferencesession[]
+
+  isCollapsed:boolean=false
 }

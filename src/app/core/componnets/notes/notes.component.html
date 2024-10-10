@@ -1,12 +1,14 @@
 <div>
-    <h1>Notes</h1>
+    <h1 (click)="isCollapsed = !isCollapsed" class="collapsible-button">
+        <span>Notes</span>
+        <i class="material-icons">{{ isCollapsed ? 'expand_less':'expand_more' }}</i>
+    </h1>
     <hr/>
 
-    <div class="scrollable-container">
+    <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
         <div *ngFor="let note of notes" class="item">
             <h2>{{note.name}}</h2>
             <p>{{note.description}}</p>
-            <hr/>
         </div>
     </div>
 </div>

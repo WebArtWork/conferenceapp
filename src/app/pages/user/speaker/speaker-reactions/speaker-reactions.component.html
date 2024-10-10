@@ -1,10 +1,14 @@
 <div>
-    <h1>Reactions</h1>
+    <h1 (click)="isCollapsed = !isCollapsed" class="collapsible-button">
+        <span>Reactions</span>
+        <i class="material-icons">{{ isCollapsed ? 'expand_less':'expand_more' }}</i>
+    </h1>
     <hr/>
 
-        <div *ngFor="let reaction of reactions" >
+    <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
+        <div *ngFor="let reaction of reactions" class="item">
             <h2>{{reaction.name}}</h2>
             <p>{{reaction.description}}</p>
-            <hr/>
         </div>
+    </div>
 </div>

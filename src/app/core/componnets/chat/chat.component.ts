@@ -12,7 +12,8 @@ export class ChatComponent {
   @Input() messages:Conferencemessage[]
   @Input() questions:Conferencequestion[]
 
-  questionsLikeToggle:any={}
+  questionsLikeToggle:LikeToggleType={}
+  isCollapsed: boolean = false;
 
   LikeToggle(question_id:string,action:"like"|"dislike"){
     if(this.questionsLikeToggle[question_id] && this.questionsLikeToggle[question_id]===action){
@@ -23,4 +24,6 @@ export class ChatComponent {
   }
 }
 
-// type LikeToggleType="like"|"dislike"|""
+type LikeToggleType = {
+  [key: string]: string;
+};

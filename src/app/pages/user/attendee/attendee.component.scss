@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 100px;
+    padding: 20px 10px;
+}
+
+.content{
+    width: 100%;
+}
+
+.counter{
+    cursor: pointer;
+}

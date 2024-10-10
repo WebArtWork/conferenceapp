@@ -30,10 +30,10 @@ const routes: Routes = [
 		SpeakerComponent,
  		SpeakerSessionComponent,
    		SpeakerSessionsComponent,
-     	SpeakerLinksComponent,
-      SpeakerPollsComponent,
-      SpeakerQnasComponent,
-      SpeakerReactionsComponent,
+    	SpeakerLinksComponent,
+      	SpeakerPollsComponent,
+      	SpeakerQnasComponent,
+      	SpeakerReactionsComponent,
 	],
 	providers: []
 

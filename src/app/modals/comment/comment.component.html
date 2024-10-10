@@ -1,8 +1,11 @@
-<div *ngFor="let comment of comments">
+<div>
     <h1>Comments</h1>
     <hr>
     
-    <h2>{{comment.name}}</h2>
-    <p>{{comment.description}}</p>
-    <hr>
+    <div class="scrollable-container">
+        <div *ngFor="let comment of comments" class="item">
+            <h2>{{comment.name}}</h2>
+            <p>{{comment.description}}</p>
+        </div>
+    </div>
 </div>

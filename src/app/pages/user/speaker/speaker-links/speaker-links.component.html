@@ -1,8 +1,11 @@
-<div *ngFor="let link of links">
+<div>
     <h1>Links</h1>
     <hr>
 
-    <h1>{{link.name}}</h1>
-    <p>{{link.description}}</p>
-    <hr>
+    <div class="scrollable-container">
+        <div *ngFor="let link of links" class="item">
+            <h2>{{link.name}}</h2>
+            <p>{{link.description}}</p>
+        </div>
+    </div>
 </div>

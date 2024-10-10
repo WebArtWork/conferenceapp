@@ -1,0 +1,11 @@
+<div>
+    <h1>Reactions</h1>
+    <hr/>
+
+    <div class="scrollable-container">
+        <div *ngFor="let reaction of reactions" class="item">
+            <h2>{{reaction.name}}</h2>
+            <p>{{reaction.description}}</p>
+        </div>
+    </div>
+</div>

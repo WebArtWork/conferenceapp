@@ -1,33 +1,34 @@
-<div>
-
-    <div>
+<div class="container">
+    <div class="sidebar">
         <div class="counter" (click)="OpenModalLinks()">
-            <span>Links: </span>
+            <i class="material-icons">link</i>
             <span>{{links.length}}</span>
         </div>
 
         <div class="counter" (click)="OpenModalComment()">
-            <span>Commnets: </span>
+            <i class="material-icons">forum</i>
             <span>{{comments.length}}</span>
         </div>
 
         <div class="counter" (click)="OpenModalPoll()">
-            <span>Polls: </span>
+            <i class="material-icons">poll</i>
             <span>{{polls.length}}</span>
         </div>
 
         <div class="counter" (click)="OpenModalQna()">
-            <span>Qnas: </span>
+            <i class="material-icons">live_help</i>
             <span>{{qnas.length}}</span>
         </div>
     </div>
 
-    <app-speaker-sessions *ngIf="!sessionId" [sessions]="sessions"/>
-    <app-speaker-session *ngIf="sessionId" [session]="session"/>
+    <div class="content">
+        <app-speaker-sessions *ngIf="!sessionId" [sessions]="sessions"/>
+        <app-speaker-session *ngIf="sessionId" [session]="session"/>
 
-    <app-notes [notes]="notes"/>
-    <app-chat type="messages" [messages]="messages"/>
-    <app-chat type="questions" [questions]="questions"/>
+        <app-notes [notes]="notes"/>
+        <app-chat type="messages" [messages]="messages"/>
+        <app-chat type="questions" [questions]="questions"/>
 
-    <app-speaker-reactions [reactions]="reactions"/>
+        <app-speaker-reactions [reactions]="reactions"/>
+    </div>
 </div>

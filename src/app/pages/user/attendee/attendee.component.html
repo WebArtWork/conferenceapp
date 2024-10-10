@@ -1,1 +1,20 @@
-<p>Page Attendee is connected</p>
+<div class="container">
+    <div class="sidebar">
+        <div class="counter" (click)="OpenModalComment()">
+            <i class="material-icons">forum</i>
+            <span>{{comments.length}}</span>
+        </div>
+        <div class="counter" (click)="OpenModalReaction()">
+            <i class="material-icons">favorite</i>
+            <span>{{reactions.length}}</span>
+        </div>
+    </div>
+    <div class="content">
+        <app-notes [notes]="notes"/>
+        <app-chat type="messages" [messages]="messages"/>
+        <app-chat type="questions" [questions]="questions"/>
+        <app-attendee-qnas [qnas]="qnas"/>
+        <app-attendee-links [links]="links"/>
+        <app-attendee-polls [polls]="polls"/>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Conferencelink, ConferencelinkService } from 'src/app/modules/conferencelink/services/conferencelink.service';
 import { Conferencesession, ConferencesessionService } from 'src/app/modules/conferencesession/services/conferencesession.service';
-import { SpeakerSessionsComponent } from './speaker-sessions/speaker-sessions.component';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/core/modules/modal/modal.service';
 import { SpeakerLinksComponent } from './speaker-links/speaker-links.component';

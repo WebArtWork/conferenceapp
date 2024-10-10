@@ -2,9 +2,10 @@
     <h1>Qnas</h1>
     <hr/>
 
-    <div *ngFor="let qna of qnas">
-        <h2>{{qna.name}}</h2>
-        <p>{{qna.description}}</p>
-        <hr/>
+    <div class="scrollable-container">
+        <div *ngFor="let qna of qnas" class="item">
+            <h2>{{qna.name}}</h2>
+            <p>{{qna.description}}</p>
+        </div>
     </div>
 </div>

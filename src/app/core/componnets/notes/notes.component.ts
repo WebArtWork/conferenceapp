@@ -8,4 +8,6 @@ import { Conferencenote } from 'src/app/modules/conferencenote/services/conferen
 })
 export class NotesComponent {
   @Input() notes:Conferencenote[]
+
+  isCollapsed: boolean = false;
 }

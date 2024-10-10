@@ -1,0 +1,19 @@
+.collapsible-content {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-top: none;
+}
+
+.collapsible-button {
+    cursor: pointer;    
+}
+
+.item{
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+
+.scrollable-container {
+    height: 300px; 
+    overflow-y: auto; 
+}  
