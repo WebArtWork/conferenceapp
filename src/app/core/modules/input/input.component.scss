@@ -176,6 +176,11 @@ input.error, textarea.error {
 		}
 	}
 
+	.check-text{
+		position: relative;
+		left:45px;
+	}
+
 	&:hover input ~ .checkmark {
 		background-color: #0f353d60;
 	}

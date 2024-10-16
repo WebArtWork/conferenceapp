@@ -10,8 +10,8 @@ import {
 } from "wacom";
 
 export interface Conferencenote extends CrudDocument {
-  name: string;
-  description: string;
+  text: string;
+  author:string;
   session:string;
 }
 

@@ -11,6 +11,9 @@ import {
 export interface Conference extends CrudDocument {
   name: string;
   description: string;
+  startTime: Date;
+  endTime: Date;
+  status: 'new'|'prepared'|'inProgres'|'ended'|'canceled';
 }
 
 @Injectable({

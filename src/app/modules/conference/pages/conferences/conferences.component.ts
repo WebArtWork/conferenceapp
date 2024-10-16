@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 	styleUrls: ['./conferences.component.scss']
 })
 export class ConferencesComponent {
-	columns = ['name', 'description'];
+	columns = ['name', 'description','status','startTime', 'endTime' ];
+
 
 	form: FormInterface = this._form.getForm('conferences', {
 		formId: 'conferences',
@@ -24,6 +25,7 @@ export class ConferencesComponent {
 				name: 'Text',
 				key: 'name',
 				focused: true,
+				required:true,
 				fields: [
 					{
 						name: 'Placeholder',
@@ -48,7 +50,42 @@ export class ConferencesComponent {
 						value: 'Description'
 					}
 				]
-			}
+			},
+			{
+				name: 'DateTime',
+				key: 'startTime',
+				fields: [
+					{
+						name: 'Label',
+						value: 'Start Time'
+					}
+				]
+			},
+			{
+				name: 'DateTime',
+				key: 'endTime',
+				fields: [
+					{
+						name: 'Label',
+						value: 'End Time'
+					}
+				]
+			},
+			{
+				name: 'Select',
+				key: 'status',
+				required:true,
+				fields: [
+					{
+						name: 'Items',
+						value: ['new','prepared','inProgres','ended','canceled'],
+					},
+					{
+						name: 'Label',
+						value: 'Status'
+					}
+				]
+			},
 		]
 	});
 
@@ -60,7 +97,7 @@ export class ConferencesComponent {
 					this._sc.create(created as Conference);
 					close();
 				}
-			});
+			},{status:'new'});
 		},
 		update: (doc: Conference) => {
 			this._form

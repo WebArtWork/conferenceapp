@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
 import { QuestionsComponent } from './questions.component';
 import { Routes, RouterModule } from '@angular/router';
+import { LikesPipe } from 'src/app/core/pipes/likes.pipe';
+import { DislikesPipe } from 'src/app/core/pipes/dislikes.pipe';
 
 const routes: Routes = [
 	{
@@ -17,10 +19,13 @@ const routes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forChild(routes),
-		CoreModule
+		CoreModule,
+		LikesPipe,
+		DislikesPipe
 	],
 	declarations: [
-		QuestionsComponent
+		QuestionsComponent,
+
 	],
 	providers: []
 

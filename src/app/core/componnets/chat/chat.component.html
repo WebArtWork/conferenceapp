@@ -8,8 +8,7 @@
     <ng-container *ngIf="type==='messages'">
         <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
             <div  *ngFor="let message of messages">
-                <h2>{{message.name}}</h2>
-                <p>{{message.description}}</p>
+                <p>{{message.text}}</p>
                 <hr/>
             </div>
         </div>
@@ -19,8 +18,8 @@
         <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
             <div  *ngFor="let question of questions">
                 <div>
-                    <h2>{{question.name}}</h2>
-                    <p>{{question.description}}</p>
+                    <!-- <h2>{{question.name}}</h2> -->
+                    <p>{{question.text}}</p>
                     <div>
                         <i class="material-icons" 
                             [ngClass]="{'active': questionsLikeToggle[question._id] && questionsLikeToggle[question._id]==='like'}" 

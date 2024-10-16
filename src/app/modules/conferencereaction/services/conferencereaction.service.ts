@@ -10,8 +10,7 @@ import {
 } from "wacom";
 
 export interface Conferencereaction extends CrudDocument {
-  name: string;
-  description: string;
+  svg:string;
   session:string;
 }
 

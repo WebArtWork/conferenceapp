@@ -5,6 +5,7 @@ import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/modules/user/services/user.service";
 
 @Component({
   templateUrl: "./notes.component.html",
@@ -12,7 +13,7 @@ import { Router } from "@angular/router";
 })
 export class NotesComponent {
   sessionId = this._router.url.includes('/notes/') ? this._router.url.replace('/notes/', '') : '';
-  columns = ["name", "description"];
+  columns = ["author","text"];
 
   form: FormInterface = this._form.getForm("notes", {
     formId: "notes",
@@ -20,30 +21,17 @@ export class NotesComponent {
     components: [
       {
         name: "Text",
-        key: "name",
+        key: "text",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
-            value: "fill notes title",
+            value: "fill note text",
           },
           {
             name: "Label",
-            value: "Title",
-          },
-        ],
-      },
-      {
-        name: "Text",
-        key: "description",
-        fields: [
-          {
-            name: "Placeholder",
-            value: "fill notes description",
-          },
-          {
-            name: "Label",
-            value: "Description",
+            value: "Note",
           },
         ],
       },
@@ -110,6 +98,8 @@ export class NotesComponent {
     private _sc: ConferencenoteService,
     private _form: FormService,
     private _core: CoreService,
-    private _router:Router
+    private _router:Router,
+
+    public us:UserService
   ) {}
 }

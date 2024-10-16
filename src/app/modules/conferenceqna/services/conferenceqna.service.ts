@@ -9,10 +9,23 @@ import {
   CrudDocument,
 } from "wacom";
 
+interface Question{
+  question:string;
+  answers:string[]
+}
+
+interface Answer{
+  author:string;
+  questionId:string;
+  answer:string
+}
+
 export interface Conferenceqna extends CrudDocument {
   name: string;
   description: string;
   session:string;
+  questions:Question[];
+  answers:Answer[];
 }
 
 @Injectable({

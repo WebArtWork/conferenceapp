@@ -13,6 +13,7 @@ export interface Conferencelink extends CrudDocument {
   name: string;
   description: string;
   session:string;
+  url?:string;
 }
 
 @Injectable({

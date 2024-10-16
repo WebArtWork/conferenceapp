@@ -18,6 +18,7 @@ import { PasswordComponent } from './password/password.component';
 import { SelectComponent } from './select/select.component';
 import { BooleanComponent } from './boolean/boolean.component';
 import { TagsComponent } from './tags/tags.component';
+import { DateTimeComponent } from './datetime/datetime.component';
 
 @NgModule({
 	imports: [
@@ -40,7 +41,9 @@ import { TagsComponent } from './tags/tags.component';
 		TextComponent,
 		ButtonComponent,
 		BooleanComponent,
-		TagsComponent
+		TagsComponent,
+
+		DateTimeComponent
 	]
 })
 export class FormcomponentsModule {
@@ -100,5 +103,7 @@ export class FormcomponentsModule {
 		);
 
 		this._form.injectComponent<TimeComponent>(TimeComponent);
+
+		this._form.injectComponent<DateTimeComponent>(DateTimeComponent);
 	}
 }

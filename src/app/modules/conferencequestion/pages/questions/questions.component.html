@@ -3,4 +3,14 @@
 	[columns]="columns"
 	[config]="config"
 	[rows]="rows"
-></wtable>
+>
+	<ng-template cell="author" let-element>
+		{{us.doc(element.author).email}}
+  	</ng-template>
+  	<ng-template cell="likes" let-element>
+		{{element.likes | likes}}
+	</ng-template>
+	<ng-template cell="dislikes" let-element>
+		{{element.likes | dislikes}}
+	</ng-template>
+</wtable>

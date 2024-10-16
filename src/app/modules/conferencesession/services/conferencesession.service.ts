@@ -13,6 +13,9 @@ export interface Conferencesession extends CrudDocument {
 	name: string;
 	description: string;
 	conference: string;
+	startTime: Date;
+  	endTime: Date;
+  	status: 'new'|'prepared'|'inProgres'|'ended'|'canceled';
 }
 
 @Injectable({

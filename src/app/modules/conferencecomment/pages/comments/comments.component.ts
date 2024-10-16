@@ -5,6 +5,7 @@ import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/modules/user/services/user.service";
 
 @Component({
   templateUrl: "./comments.component.html",
@@ -13,7 +14,7 @@ import { Router } from "@angular/router";
 export class CommentsComponent {
   sessionId = this._router.url.includes('/comments/') ? this._router.url.replace('/comments/', '') : '';
 
-  columns = ["name", "description"];
+  columns = ["author","text"];
 
   form: FormInterface = this._form.getForm("comments", {
     formId: "comments",
@@ -21,30 +22,17 @@ export class CommentsComponent {
     components: [
       {
         name: "Text",
-        key: "name",
+        key: "text",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
-            value: "fill comments title",
+            value: "fill comments text",
           },
           {
             name: "Label",
-            value: "Title",
-          },
-        ],
-      },
-      {
-        name: "Text",
-        key: "description",
-        fields: [
-          {
-            name: "Placeholder",
-            value: "fill comments description",
-          },
-          {
-            name: "Label",
-            value: "Description",
+            value: "Comment",
           },
         ],
       },
@@ -111,6 +99,8 @@ export class CommentsComponent {
     private _sc: ConferencecommentService,
     private _form: FormService,
     private _core: CoreService,
-    private _router: Router
+    private _router: Router,
+
+    public us:UserService,
   ) {}
 }

@@ -9,10 +9,28 @@ import {
   CrudDocument,
 } from "wacom";
 
+interface Vote {
+  author?:string;
+  answer:string;
+  answers:string[];
+}
+interface Comment{
+  author?:string;
+  comment:string
+}
+
 export interface Conferencepoll extends CrudDocument {
-  name: string;
-  description: string;
   session:string;
+  question:string;
+  answers:string[];
+  votes: Vote[];
+  startTime: Date;
+  endTime: Date;
+  isAnonymous:boolean;
+  isMultiple:boolean;
+  isQuiz:boolean;
+  correctAnswer:string;
+  comments:Comment[]
 }
 
 @Injectable({
@@ -20,7 +38,6 @@ export interface Conferencepoll extends CrudDocument {
 })
 export class ConferencepollService extends CrudService<Conferencepoll> {
   _helper=inject(HelperService)
-  
   
   conferencepolls: Conferencepoll[] = [];
 

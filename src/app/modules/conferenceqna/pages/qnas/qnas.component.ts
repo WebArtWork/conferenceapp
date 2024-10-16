@@ -14,6 +14,7 @@ export class QnasComponent {
   sessionId = this._router.url.includes('/qnas/') ? this._router.url.replace('/qnas/', '') : '';
   
   columns = ["name", "description"];
+  qustionsComponent=[]
 
   form: FormInterface = this._form.getForm("qnas", {
     formId: "qnas",
@@ -23,6 +24,7 @@ export class QnasComponent {
         name: "Text",
         key: "name",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
@@ -48,6 +50,29 @@ export class QnasComponent {
           },
         ],
       },
+      {
+        components:this.qustionsComponent
+      },
+      {
+        name:'Button',
+        fields:[
+          {
+            name: "Label",
+            value: "Add Question",
+          },
+          {
+            name: "Click",
+            value: ()=>{
+              // this.qustionsComponent.push({
+              //   components:[{name:,}],
+              
+              // })
+            } ,
+          },
+        ],
+        
+      }
+
     ],
   });
 

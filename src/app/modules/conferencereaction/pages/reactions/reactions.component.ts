@@ -5,6 +5,7 @@ import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/modules/user/services/user.service";
 
 @Component({
   templateUrl: "./reactions.component.html",
@@ -13,7 +14,7 @@ import { Router } from "@angular/router";
 export class ReactionsComponent {
   sessionId = this._router.url.includes('/reactions/') ? this._router.url.replace('/reactions/', '') : '';
 
-  columns = ["name", "description"];
+  columns = ["author","svg"];
 
   form: FormInterface = this._form.getForm("reactions", {
     formId: "reactions",
@@ -21,30 +22,13 @@ export class ReactionsComponent {
     components: [
       {
         name: "Text",
-        key: "name",
+        key: "svg",
         focused: true,
+        required:true,
         fields: [
           {
-            name: "Placeholder",
-            value: "fill reactions title",
-          },
-          {
             name: "Label",
-            value: "Title",
-          },
-        ],
-      },
-      {
-        name: "Text",
-        key: "description",
-        fields: [
-          {
-            name: "Placeholder",
-            value: "fill reactions description",
-          },
-          {
-            name: "Label",
-            value: "Description",
+            value: "SVG",
           },
         ],
       },
@@ -111,6 +95,8 @@ export class ReactionsComponent {
     private _sc: ConferencereactionService,
     private _form: FormService,
     private _core: CoreService,
-    private _router:Router
+    private _router:Router,
+
+    public us:UserService
   ) {}
 }

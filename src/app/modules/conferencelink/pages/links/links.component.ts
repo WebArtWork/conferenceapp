@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 export class LinksComponent {
   sessionId = this._router.url.includes('/links/') ? this._router.url.replace('/links/', '') : '';
 
-  columns = ["name", "description"];
+  columns = ["name", "description","url"];
 
   form: FormInterface = this._form.getForm("links", {
     formId: "links",
@@ -23,6 +23,7 @@ export class LinksComponent {
         name: "Text",
         key: "name",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
@@ -45,6 +46,20 @@ export class LinksComponent {
           {
             name: "Label",
             value: "Description",
+          },
+        ],
+      },
+      {
+        name: "Text",
+        key: "url",
+        fields: [
+          {
+            name: "Placeholder",
+            value: "fill links URL",
+          },
+          {
+            name: "Label",
+            value: "URL",
           },
         ],
       },
@@ -90,12 +105,12 @@ export class LinksComponent {
       });
     },
     buttons: [
-      {
-        icon: "cloud_download",
-        click: (doc: Conferencelink) => {
-          this._form.modalUnique<Conferencelink>("links", "url", doc);
-        },
-      },
+      // {
+      //   icon: "cloud_download",
+      //   click: (doc: Conferencelink) => {
+      //     this._form.modalUnique<Conferencelink>("links", "url", doc);
+      //   },
+      // },
     ],
   };
 

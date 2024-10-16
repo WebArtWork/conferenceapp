@@ -5,6 +5,7 @@ import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/modules/user/services/user.service";
 
 @Component({
   templateUrl: "./messages.component.html",
@@ -13,7 +14,7 @@ import { Router } from "@angular/router";
 export class MessagesComponent {
   sessionId = this._router.url.includes('/messages/') ? this._router.url.replace('/messages/', '') : '';
 
-  columns = ["name", "description"];
+  columns = ["author","text"];
 
   form: FormInterface = this._form.getForm("messages", {
     formId: "messages",
@@ -21,30 +22,17 @@ export class MessagesComponent {
     components: [
       {
         name: "Text",
-        key: "name",
+        key: "text",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
-            value: "fill messages title",
+            value: "fill message text",
           },
           {
             name: "Label",
-            value: "Title",
-          },
-        ],
-      },
-      {
-        name: "Text",
-        key: "description",
-        fields: [
-          {
-            name: "Placeholder",
-            value: "fill messages description",
-          },
-          {
-            name: "Label",
-            value: "Description",
+            value: "Message",
           },
         ],
       },
@@ -111,6 +99,8 @@ export class MessagesComponent {
     private _sc: ConferencemessageService,
     private _form: FormService,
     private _core: CoreService,
-    private _router: Router
+    private _router: Router,
+
+    public us:UserService,
   ) {}
 }

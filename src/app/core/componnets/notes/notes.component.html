@@ -7,8 +7,7 @@
 
     <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
         <div *ngFor="let note of notes" class="item">
-            <h2>{{note.name}}</h2>
-            <p>{{note.description}}</p>
+            <p>{{note.text}}</p>
         </div>
     </div>
 </div>

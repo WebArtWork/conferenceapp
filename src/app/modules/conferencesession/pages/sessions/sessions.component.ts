@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 export class SessionsComponent {
   conferenceId = this._router.url.includes('/sessions/') ? this._router.url.replace('/sessions/', '') : '';
   
-  columns = ["name", "description"];
+  columns = ['name', 'description', 'status','startTime', 'endTime'];
 
   form: FormInterface = this._form.getForm("sessions", {
     formId: "sessions",
@@ -23,6 +23,7 @@ export class SessionsComponent {
         name: "Text",
         key: "name",
         focused: true,
+				required:true,
         fields: [
           {
             name: "Placeholder",
@@ -48,6 +49,41 @@ export class SessionsComponent {
           },
         ],
       },
+      {
+				name: 'DateTime',
+				key: 'startTime',
+				fields: [
+					{
+						name: 'Label',
+						value: 'Start Time'
+					}
+				]
+			},
+			{
+				name: 'DateTime',
+				key: 'endTime',
+				fields: [
+					{
+						name: 'Label',
+						value: 'End Time'
+					}
+				]
+			},
+			{
+				name: 'Select',
+				key: 'status',
+				required:true,
+				fields: [
+					{
+						name: 'Items',
+						value: ['new','prepared','inProgres','ended','canceled'],
+					},
+					{
+						name: 'Label',
+						value: 'Status'
+					}
+				]
+			},
     ],
   });
 
@@ -62,7 +98,7 @@ export class SessionsComponent {
           this._sc.create(created as Conferencesession);
           close();
         },
-      });
+      },{status:'new'});
     },
     update: (doc: Conferencesession) => {
       this._form

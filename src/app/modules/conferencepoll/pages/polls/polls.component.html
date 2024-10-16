@@ -3,4 +3,17 @@
 	[columns]="columns"
 	[config]="config"
 	[rows]="rows"
-></wtable>
+>
+	<ng-template cell="isAnonymous" let-element>
+		<i *ngIf="element.isAnonymous" class="material-icons checked" >check_circle</i>
+		<i *ngIf="!element.isAnonymous" class="material-icons" >cancel</i>
+	</ng-template>
+	<ng-template cell="isMultiple" let-element>
+		<i *ngIf="element.isMultiple" class="material-icons checked" >check_circle</i>
+		<i *ngIf="!element.isMultiple" class="material-icons" >cancel</i>
+  	</ng-template>
+	<ng-template cell="isQuiz" let-element>
+		<i *ngIf="element.isQuiz" class="material-icons checked" >check_circle</i>
+		<i *ngIf="!element.isQuiz" class="material-icons" >cancel</i>
+  	</ng-template>
+</wtable>

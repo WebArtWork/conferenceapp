@@ -5,6 +5,7 @@ import { FormService } from "src/app/core/modules/form/form.service";
 import { TranslateService } from "src/app/core/modules/translate/translate.service";
 import { FormInterface } from "src/app/core/modules/form/interfaces/form.interface";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/modules/user/services/user.service";
 
 @Component({
   templateUrl: "./questions.component.html",
@@ -13,7 +14,7 @@ import { Router } from "@angular/router";
 export class QuestionsComponent {
   sessionId = this._router.url.includes('/questions/') ? this._router.url.replace('/questions/', '') : '';
 
-  columns = ["name", "description"];
+  columns = ["author","text","likes", "dislikes"];
 
   form: FormInterface = this._form.getForm("questions", {
     formId: "questions",
@@ -21,30 +22,17 @@ export class QuestionsComponent {
     components: [
       {
         name: "Text",
-        key: "name",
+        key: "text",
         focused: true,
+        required:true,
         fields: [
           {
             name: "Placeholder",
-            value: "fill questions title",
+            value: "fill question text",
           },
           {
             name: "Label",
-            value: "Title",
-          },
-        ],
-      },
-      {
-        name: "Text",
-        key: "description",
-        fields: [
-          {
-            name: "Placeholder",
-            value: "fill questions description",
-          },
-          {
-            name: "Label",
-            value: "Description",
+            value: "Question",
           },
         ],
       },
@@ -111,6 +99,8 @@ export class QuestionsComponent {
     private _sc: ConferencequestionService,
     private _form: FormService,
     private _core: CoreService,
-    private _router:Router
+    private _router:Router,
+
+    public us:UserService
   ) {}
 }

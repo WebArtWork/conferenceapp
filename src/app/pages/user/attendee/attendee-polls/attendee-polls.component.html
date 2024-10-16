@@ -7,8 +7,8 @@
 
     <div *ngIf="isCollapsed" class="collapsible-content scrollable-container">
         <div *ngFor="let poll of polls" class="item">
-            <h2>{{poll.name}}</h2>
-            <p>{{poll.description}}</p>
+            <!-- <h2>{{poll.name}}</h2> -->
+            <p>{{poll.question}}</p>
         </div>
     </div>
 </div>

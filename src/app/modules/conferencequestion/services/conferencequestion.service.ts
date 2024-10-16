@@ -9,10 +9,15 @@ import {
   CrudDocument,
 } from "wacom";
 
+export interface Like {
+  author:string;
+  possitive:boolean;
+}
+
 export interface Conferencequestion extends CrudDocument {
-  name: string;
-  description: string;
+  text:string;
   session:string;
+  likes:Like[]
 }
 
 @Injectable({
