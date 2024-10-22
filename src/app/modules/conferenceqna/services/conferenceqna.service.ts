@@ -14,7 +14,7 @@ interface Question{
   answers:string[]
 }
 
-interface Answer{
+export interface Answer{
   author:string;
   questionId:string;
   answer:string

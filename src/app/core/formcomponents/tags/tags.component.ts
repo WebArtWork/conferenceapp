@@ -22,13 +22,21 @@ export class TagsComponent implements AfterViewInit, OnInit {
 
 	// tags: string[] = [];
 	addTag(data: any) {
-		data.tags.push(this.inputRef.formControl.value.replace('\n', ''));
-		this.inputRef.formControl.setValue('');
+		data.submition[data.key] =
+		  data.submition[data.key] || [];
+	  
+		data.submition[data.key].push(
+		  this.inputRef.value.replace('\n', '')
+		);
+	  
+		this.inputRef.value = '';
+	  
 		this.update();
+	  
 		setTimeout(() => {
-			this.inputRef.inputEl.nativeElement.focus();
+		  this.inputRef.focus();
 		}, 100);
-	}
+	  }
 
 	ngAfterViewInit() {
 		// this.tags = this.value || this.tags;

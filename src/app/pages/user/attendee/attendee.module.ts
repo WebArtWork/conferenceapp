@@ -6,11 +6,19 @@ import { AttendeeLinksComponent } from './attendee-links/attendee-links.componen
 import { AttendeeQnasComponent } from './attendee-qnas/attendee-qnas.component';
 import { AttendeePollsComponent } from './attendee-polls/attendee-polls.component';
 import { AttendeeReactionsComponent } from './attendee-reactions/attendee-reactions.component';
+import { AttendeeConferencesComponent } from './attendee-conferences/attendee-conferences.component';
+import { AttendeeSessionsComponent } from './attendee-sessions/attendee-sessions.component';
 
-const routes: Routes = [{
-	path: '',
-	component: AttendeeComponent
-}];
+const routes: Routes = [
+	{
+		path: '',
+		component: AttendeeComponent
+	},
+	{
+		path: ':attendee_id',
+		component: AttendeeComponent
+	}
+];
 
 @NgModule({
 	imports: [
@@ -22,7 +30,9 @@ const routes: Routes = [{
   		AttendeeLinksComponent,
     	AttendeeQnasComponent,
     	AttendeePollsComponent,
-     	AttendeeReactionsComponent
+     	AttendeeReactionsComponent,
+      AttendeeConferencesComponent,
+      AttendeeSessionsComponent
 	],
 	providers: []
 

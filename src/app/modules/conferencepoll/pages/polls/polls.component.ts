@@ -15,6 +15,9 @@ export class PollsComponent {
   sessionId = this._router.url.includes('/polls/') ? this._router.url.replace('/polls/', '') : '';
 
   columns = ["question","correctAnswer","isAnonymous","isMultiple","isQuiz","startTime", "endTime"];
+  commentsComponents:any=[]
+  votesComponents:any=[]
+  answersComponents:any=[]
 
   form: FormInterface = this._form.getForm("polls", {
     formId: "polls",
@@ -50,6 +53,45 @@ export class PollsComponent {
           },
         ],
       },
+
+      {
+        components: this.answersComponents
+      },
+      {
+        name:"Button",
+        key:"answers",
+        fields:[
+          {
+            name:"Label",
+            value:"Add Answer"
+          },
+          {
+            name:"Click",
+            value:()=>{
+              const answer={
+                components:[
+                  {
+                    name: "Tags",
+                    key: "answers",
+                    fields: [
+                      {
+                        name: "Placeholder",
+                        value: "fill answers",
+                      },
+                      {
+                        name: "Label",
+                        value: "Answers",
+                      },
+                    ],
+                  },
+                ]
+              }
+              this.answersComponents.push(answer)
+            }
+          }
+        ]
+      },
+
       {
         name: "Boolean",
         key: "isAnonymous",
@@ -80,6 +122,131 @@ export class PollsComponent {
           },
         ],
       },
+
+      {
+        components: this.commentsComponents
+      },
+      {
+        name:"Button",
+        key:"comments",
+        fields:[
+          {
+            name:"Label",
+            value:"Add Commnet"
+          },
+          {
+            name:"Click",
+            value:()=>{
+              const comment={
+                components:[
+                  {
+                    name: "Text",
+                    key: "comments[].comment",
+                    fields: [
+                      {
+                        name: "Placeholder",
+                        value: "fill comment",
+                      },
+                      {
+                        name: "Label",
+                        value: "Comment",
+                      },
+
+                    ],
+                  },
+                  {
+                    name: "Button",
+                    fields: [
+                      {
+                        name: "Label",
+                        value: "Remove",
+                      },
+                      {
+                        name: "Click",
+                        value: () => {
+                          const index = this.commentsComponents.indexOf(comment)
+                          if (index !== -1) this.commentsComponents.splice(index, 1)
+                        },
+                      },
+                    ],
+                  },
+                ]
+              }
+              this.commentsComponents.push(comment)
+            }
+          }
+        ]
+      },
+
+      {
+        components: this.votesComponents
+      },
+      {
+        name:"Button",
+        key:"votes",
+        fields:[
+          {
+            name:"Label",
+            value:"Add Vote"
+          },
+          {
+            name:"Click",
+            value:()=>{
+              const vote={
+                components:[
+                  {
+                    name: "Text",
+                    key: "votes[].answer",
+                    fields: [
+                      {
+                        name: "Placeholder",
+                        value: "fill answer",
+                      },
+                      {
+                        name: "Label",
+                        value: "Answer",
+                      },
+
+                    ],
+                  },
+                  {
+                    name: "Tags",
+                    key: "votes[].answers",
+                    fields: [
+                      {
+                        name: "Placeholder",
+                        value: "fill answers",
+                      },
+                      {
+                        name: "Label",
+                        value: "Answers",
+                      },
+                    ],
+                  },
+                  {
+                    name: "Button",
+                    fields: [
+                      {
+                        name: "Label",
+                        value: "Remove",
+                      },
+                      {
+                        name: "Click",
+                        value: () => {
+                          const index = this.votesComponents.indexOf(vote)
+                          if (index !== -1) this.votesComponents.splice(index, 1)
+                        },
+                      },
+                    ],
+                  },
+                ]
+              }
+              this.votesComponents.push(vote)
+            }
+          }
+        ]
+      },
+
       {
 				name: 'DateTime',
 				key: 'startTime',
@@ -109,8 +276,25 @@ export class PollsComponent {
         label: "Create",
         click: (created: unknown, close: () => void) => {
           if(this.sessionId) (created as Conferencepoll).session=this.sessionId
+
+          if(!(created as Conferencepoll).isAnonymous){
+            const newComments=(created as Conferencepoll).comments.map(el=>({
+              answer:el.comment,
+              author:this.us.user._id,
+            }))
+            const newVotes=(created as Conferencepoll).votes.map(el=>({
+              answer:el.answer,
+              answers:el.answers,
+              author:this.us.user._id,
+            }))
+  //@ts-ignore
+            created.comments=newComments
+  //@ts-ignore
+            created.votes=newVotes
+          }
+
 console.log(created)
-          this._sc.create(created as Conferencepoll);
+          // this._sc.create(created as Conferencepoll);
           close();
         },
       });

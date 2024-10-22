@@ -10,11 +10,21 @@
         </div>
     </div>
     <div class="content">
+        <div *ngIf="!conferenceId">
+            <app-attendee-conferences [conferences]="conferences"/>
+        </div>
+        <div *ngIf="conferenceId">
+            <app-attendee-sessions (sessionEvent)="receiveSession($event)" [sessions]="sessions"/>
+            <hr/>
+            <div *ngIf="sessionId">
+                <app-chat type="messages" [messages]="messages"/>
+                <app-chat type="questions" [questions]="questions"/>
+                <app-attendee-qnas [qnas]="qnas"/>
+                <app-attendee-links [links]="links"/>
+                <app-attendee-polls [polls]="polls"/>
+            </div>
+        </div>
         <app-notes [notes]="notes"/>
-        <app-chat type="messages" [messages]="messages"/>
-        <app-chat type="questions" [questions]="questions"/>
-        <app-attendee-qnas [qnas]="qnas"/>
-        <app-attendee-links [links]="links"/>
-        <app-attendee-polls [polls]="polls"/>
+
     </div>
 </div>
