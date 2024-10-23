@@ -76,6 +76,8 @@ export class FormService {
 		fields = ['Placeholder', 'Label'],
 		customFields: Record<string, string> = {}
 	): void {
+console.log(component.name)
+
 		const name = component.name.replace('_', '').replace('Component', '');
 
 		if (!this._injectedComponent[name]) {
