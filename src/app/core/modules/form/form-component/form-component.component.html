@@ -17,6 +17,8 @@
 	</div>
 </ng-container>
 
+{{component.name}} {{component | json}}
+
 <ng-container *ngIf="component.name && template && (localKey && localSubmition || !component.key)">
 	<div class="form-container">
 		<ng-container

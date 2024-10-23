@@ -293,8 +293,7 @@ export class PollsComponent {
             created.votes=newVotes
           }
 
-console.log(created)
-          // this._sc.create(created as Conferencepoll);
+          this._sc.create(created as Conferencepoll);
           close();
         },
       });

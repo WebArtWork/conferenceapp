@@ -194,8 +194,8 @@ export class QnasComponent {
           }))
 //@ts-ignore
           created.answers=newAnswers
-console.log(created)
-          // this._sc.create(created as Conferenceqna);
+
+          this._sc.create(created as Conferenceqna);
           close();
         },
       },
